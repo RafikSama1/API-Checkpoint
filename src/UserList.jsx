@@ -8,8 +8,9 @@ export default function UserList(){
     useEffect(()=>{
         axios
          .get('https://jsonplaceholder.typicode.com/users')
-         .then((response) => setUsers(response.data))
-         .then(console.log(users));
+         .then((response) => {
+            setUsers(response.data);
+            });
         }, []);
 
     return(
@@ -18,11 +19,11 @@ export default function UserList(){
                 <ul>
                     {users.map((user) => {
                         return(
-                            <li key={user.id}>{user}</li>
+                            <li key={user.id}>{user.name}</li>
                         )
                     })}
                 </ul>
             </div>
         </>
     )
-}
+}  
